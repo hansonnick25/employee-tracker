@@ -36,11 +36,7 @@ inquirer
       case 'View all departments':
         sql = 'SELECT * FROM departments'
         db.query(sql, params, (err, rows) => {
-          if (err) {
-            console.error(err)
-          } else {
-            console.table(rows, ['id', 'department_name'])
-          }
+          err ? console.error(err) : console.table(rows)
         })
         break
 
