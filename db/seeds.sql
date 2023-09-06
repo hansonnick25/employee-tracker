@@ -21,6 +21,6 @@ VALUES  ('Christopher', 'Wallace', 1, NULL),
         ('Calvin', 'Broadus', 3, 2),
         ('Marshall', 'Mathers', 4, 1),
         ('Andre', 'Young', 5, 4),
-        ('Kendrick', 'Duckworth', 6, 4),
+        ('Kendrick', 'Duckworth', 6, 1),
         ('Aubrey', 'Graham', 7, 1),
         ('Shawn', 'Carter', 8, 7);
