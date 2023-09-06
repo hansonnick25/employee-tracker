@@ -7,7 +7,6 @@ const db = mysql.createConnection(
     user: 'root',
     password: 'password',
     database: 'employees_db',
-    rowsAsArray: true,
   },
   console.log(`Connected to the movies_db database.`)
 )
@@ -37,21 +36,21 @@ inquirer
       case 'View all departments':
         sql = 'SELECT * FROM departments'
         db.query(sql, params, (err, rows) => {
-          err ? console.error(err) : console.log(rows)
+          err ? console.error(err) : console.table(rows)
         })
         break
 
       case 'View all roles':
         sql = 'SELECT * FROM roles'
         db.query(sql, params, (err, rows) => {
-          err ? console.error(err) : console.log(rows)
+          err ? console.error(err) : console.table(rows)
         })
         break
 
       case 'View all employees':
         sql = 'SELECT * FROM employees'
         db.query(sql, params, (err, rows) => {
-          err ? console.error(err) : console.log(rows)
+          err ? console.error(err) : console.table(rows)
         })
         break
 
@@ -68,7 +67,7 @@ inquirer
             params = [answers.department_name]
             sql = 'INSERT INTO departments (department_name) VALUES (?)'
             db.query(sql, params, (err, rows) => {
-              err ? console.error(err) : console.log(rows)
+              err ? console.error(err) : console.table(rows)
             })
           })
         break
@@ -101,7 +100,7 @@ inquirer
             sql =
               'INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)'
             db.query(sql, params, (err, rows) => {
-              err ? console.error(err) : console.log(rows)
+              err ? console.error(err) : console.table(rows)
             })
           })
         break
@@ -140,7 +139,7 @@ inquirer
             sql =
               'INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)'
             db.query(sql, params, (err, rows) => {
-              err ? console.error(err) : console.log(rows)
+              err ? console.error(err) : console.table(rows)
             })
           })
         break
@@ -163,8 +162,7 @@ inquirer
             params = [answers.role_id, answers.employee_id]
             sql = 'UPDATE employees SET role_id = ? WHERE id = ?'
             db.query(sql, params, (err, rows) => {
-              err ? console.error(err) : console.log(rows)
-              render(rows)
+              err ? console.error(err) : console.table(rows)
             })
           })
         break
